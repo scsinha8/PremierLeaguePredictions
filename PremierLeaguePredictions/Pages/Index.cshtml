@@ -1,0 +1,30 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    @{
+        bool auth;
+        if (User.Claims.Count() == 0)
+        {
+            auth = false;
+        }
+        else
+        {
+            auth = true;
+        }
+
+        if (!auth)
+        {
+            <p>Please login or register to view the Premier League predictions.</p>
+        }
+        else
+        {
+            <h3>Use nav bar</h3>
+        }
+    }
+    
+</div>
