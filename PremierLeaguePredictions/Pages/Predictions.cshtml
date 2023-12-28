@@ -2,3 +2,40 @@
 @model PremierLeaguePredictions.Pages.PredictionsModel
 @{
 }
+
+<h1>Premier League predictions</h1>
+
+<table class="table">
+    <tr>
+        <th>Team</th>
+        <th>Actual Position</th>
+        <th>SS diff</th>
+        <th>LM diff</th>
+        <th>JL diff</th>
+        <th>DD diff</th>
+    </tr>
+
+    @foreach (var item in Model.predictions_table)
+    {
+        <tr>
+            <td>
+                @Html.DisplayTextFor((modelItem=>item.Team))
+            </td>
+            <td>
+                @Html.DisplayTextFor((modelItem=>item.Actual))
+            </td>
+            <td>
+                @Html.DisplayTextFor(modelItem=>item.ss_diff)
+            </td>
+            <td>
+                @Html.DisplayTextFor(modelItem=>item.lm_diff)
+            </td>
+            <td>
+                @Html.DisplayTextFor(modelItem=>item.jl_diff)
+            </td>
+            <td>
+                @Html.DisplayTextFor(modelItem=>item.dd_diff)
+            </td>
+        </tr>
+    }
+</table>

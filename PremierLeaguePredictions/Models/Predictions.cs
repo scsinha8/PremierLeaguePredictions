@@ -12,4 +12,14 @@ namespace PremierLeaguePredictions.Models
         public int dd_pred { get; set; }
 
     }
+
+    public class TableData
+    {
+        public string Team { get; set; }
+        public int ss_diff { get; set; }
+        public int lm_diff { get; set; }
+        public int jl_diff { get; set; }
+        public int dd_diff { get; set; }
+        public int Actual { get; set; }
+    }
 }
