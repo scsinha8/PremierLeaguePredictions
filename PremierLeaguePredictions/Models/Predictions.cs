@@ -22,4 +22,12 @@ namespace PremierLeaguePredictions.Models
         public int dd_diff { get; set; }
         public int Actual { get; set; }
     }
+
+    public class IndividualPrediction
+    {
+        public string Team { get; set; }
+        public int Actual { get; set; }
+        public int pred { get; set;}
+        public int diff { get; set;}
+    }
 }

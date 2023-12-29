@@ -1,0 +1,47 @@
+﻿@page "{person}"
+@model PremierLeaguePredictions.Pages.IndividualModel
+@{
+}
+<head>
+    <link rel="stylesheet" href="~/css/PLPredsStyleSheet.css"/>
+</head>
+
+<style>
+    .bullseye {
+        color: limegreen;
+    }
+
+    .wrong {
+        color: red;
+    }
+</style>
+
+<h1>@Model.Person.ToUpper()'s predictions</h1>
+
+<table>
+    <tr>
+        <th></th>
+        <th>Actual</th>
+        <th>Team Name</th>
+        <th>Difference</th>
+    </tr>
+    
+
+    @foreach(var item in Model.predictions_table)
+    {
+        <tr>
+            <td>@item.pred</td>
+            <td>@item.Actual</td>
+            <td>@item.Team</td>
+            <td>
+                <span class="@(item.diff == 0 ? "bullseye" : "normal") @(item.diff > 9 ? "wrong" : "normal")">@item.diff</span>
+            </td>
+        </tr>
+    }
+    <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td>@Model.predictions_table.Sum(i=>i.diff)</td>
+    </tr>
+</table>

@@ -2,6 +2,19 @@
 @model PremierLeaguePredictions.Pages.PredictionsModel
 @{
 }
+<head>
+    <link rel="stylesheet" href="~/css/PLPredsStyleSheet.css"/>
+</head>
+
+<style>
+    .bullseye{
+        color:limegreen;
+    }
+
+    .wrong{
+        color: red;
+    }
+</style>
 
 <h1>Premier League predictions</h1>
 
@@ -9,10 +22,10 @@
     <tr>
         <th>Team</th>
         <th>Actual Position</th>
-        <th>SS diff</th>
-        <th>LM diff</th>
-        <th>JL diff</th>
-        <th>DD diff</th>
+        <th><a asp-page="/Individual" asp-route-person="ss">SS diff</a></th>
+        <th><a asp-page="/Individual" asp-route-person="lm">LM diff</a></th>
+        <th><a asp-page="/Individual" asp-route-person="jl">JL diff</a></th>
+        <th><a asp-page="/Individual" asp-route-person="dd">DD diff</a></th>
     </tr>
 
     @foreach (var item in Model.predictions_table)
@@ -25,17 +38,25 @@
                 @Html.DisplayTextFor((modelItem=>item.Actual))
             </td>
             <td>
-                @Html.DisplayTextFor(modelItem=>item.ss_diff)
+                <span class="@(item.ss_diff == 0 ? "bullseye" : "normal") @(item.ss_diff > 9 ? "wrong" : "normal")">@item.ss_diff</span>
             </td>
             <td>
-                @Html.DisplayTextFor(modelItem=>item.lm_diff)
+                <span class="@(item.lm_diff == 0 ? "bullseye" : "normal") @(item.lm_diff > 9 ? "wrong" : "normal")">@item.lm_diff</span>
             </td>
             <td>
-                @Html.DisplayTextFor(modelItem=>item.jl_diff)
+                <span class="@(item.jl_diff == 0 ? "bullseye" : "normal") @(item.jl_diff > 9 ? "wrong" : "normal")">@item.jl_diff</span>
             </td>
             <td>
-                @Html.DisplayTextFor(modelItem=>item.dd_diff)
+                <span class="@(item.dd_diff == 0 ? "bullseye" : "normal") @(item.dd_diff > 9 ? "wrong" : "normal")">@item.dd_diff</span>
             </td>
         </tr>
     }
+    <tr style="background-color:peachpuff">
+        <td></td>
+        <td></td>
+        <td>@Model.predictions_table.Sum(i=>i.ss_diff)</td>
+        <td>@Model.predictions_table.Sum(i=>i.lm_diff)</td>
+        <td>@Model.predictions_table.Sum(i=>i.jl_diff)</td>
+        <td>@Model.predictions_table.Sum(i=>i.dd_diff)</td>
+    </tr>
 </table>

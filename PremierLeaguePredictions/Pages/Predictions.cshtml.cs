@@ -30,6 +30,7 @@ namespace PremierLeaguePredictions.Pages
         public void OnGet()
         {
             predictions = _dbContext.Predictions.ToList();
+            _cacheProvider.Set("Predictions", predictions);
 
             if (!_cacheProvider.TryGetValue("TableData", out string contentstream))
             {
@@ -65,6 +66,7 @@ namespace PremierLeaguePredictions.Pages
             }
 
             predictions_table = predictions_table.OrderBy(o=>o.Actual).ToList();
+            _cacheProvider.Set("Predictions_diff", predictions_table);
         }
     }
 }

@@ -1,0 +1,56 @@
+﻿@page
+@model PremierLeaguePredictions.Pages.CurrentTableModel
+@{
+    ViewData["Title"] = "Current Premier League Table";
+}
+<head>
+    <link rel="stylesheet" href="~/css/PLPredsStyleSheet.css"/>
+</head>
+
+<h1>@ViewData["Title"]</h1>
+
+<table class="table">
+    <tr>
+        <th></th>
+        <th></th>
+        <th>Team Name</th>
+        <th>P</th>
+        <th>W</th>
+        <th>D</th>
+        <th>L</th>
+        <th>GD</th>
+        <th>Points</th>
+    </tr>
+    @foreach (var item in Model.PLTable)
+    {
+        <tr>
+            <td>
+                <img src=@Html.DisplayTextFor(modelitem=>item.crestUrl)/>
+            </td>
+            <td>
+                @Html.DisplayTextFor(modelItem=>item.position)
+            </td>
+            <td>
+                @Html.DisplayTextFor((modelItem=>item.clubName))
+            </td>
+            <td>
+                @Html.DisplayTextFor(modelItem=>item.played)
+            </td>
+            <td>
+                @Html.DisplayTextFor(modelItem=>item.won)
+            </td>
+            <td>
+                @Html.DisplayTextFor(modelItem=>item.drawn)
+            </td>
+            <td>
+                @Html.DisplayTextFor(modelItem=>item.lost)
+            </td>
+            <td>
+                @Html.DisplayTextFor(modelItem=>item.goalDifference)
+            </td>
+            <td>
+                @Html.DisplayTextFor(modelItem=>item.points)
+            </td>
+        </tr>
+    }
+</table>

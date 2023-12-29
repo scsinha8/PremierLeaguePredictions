@@ -24,11 +24,11 @@
                         </li>
                         @if (Context.User.HasClaim("IsAuthorized", bool.TrueString))
                         {
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Privacy">Privacy</a>
-                        </li>
                             <li class="nav-item">
                                 <a class="nav-link text-dark" asp-area="" asp-page="/Predictions">Predictions</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-page="/CurrentTable">Current Table</a>
                             </li>
                         }
                     </ul>
